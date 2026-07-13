@@ -1,0 +1,311 @@
+
+:root{
+  --navy:#07131f;
+  --navy-2:#0e2235;
+  --blue:#0b4ea2;
+  --red:#d3272f;
+  --yellow:#f3c42f;
+  --cream:#f7f5ef;
+  --white:#ffffff;
+  --text:#0d1721;
+  --muted:#67727d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:var(--cream);
+  font-family:Inter,system-ui,sans-serif;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.topbar{
+  position:fixed;
+  inset:0 0 auto 0;
+  height:44px;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 4vw;
+  background:rgba(5,15,24,.86);
+  color:#fff;
+  backdrop-filter:blur(12px);
+  font:700 13px/1 "Barlow Condensed",sans-serif;
+  letter-spacing:.12em;
+}
+.topbar a{color:var(--yellow)}
+.hero{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  background:var(--navy);
+  color:#fff;
+}
+.hero-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.02);
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgba(2,11,18,.88) 0%,rgba(2,11,18,.64) 42%,rgba(2,11,18,.08) 78%),
+    linear-gradient(0deg,rgba(2,11,18,.58),transparent 52%);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:880px;
+  padding:20vh 6vw 10vh;
+}
+.eyebrow,.section-kicker{
+  font:800 15px/1 "Barlow Condensed",sans-serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+.eyebrow{color:var(--yellow)}
+.hero h1{
+  margin:.35rem 0 1rem;
+  font:800 clamp(64px,10vw,150px)/.78 "Barlow Condensed",sans-serif;
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+}
+.hero h1 span{color:var(--red);text-shadow:3px 3px 0 #fff}
+.hero h1 em{
+  color:var(--yellow);
+  font-style:italic;
+  font-size:.58em;
+  letter-spacing:.01em;
+}
+.hero-sub{
+  margin:1.2rem 0 2.2rem;
+  font:600 clamp(18px,2vw,26px)/1.3 "Barlow Condensed",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.hero-actions,.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 24px;
+  border:2px solid transparent;
+  font:800 16px/1 "Barlow Condensed",sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:.2s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--red);color:#fff}
+.btn-ghost{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+.btn-light{background:#fff;color:var(--navy)}
+.scroll-cue{
+  position:absolute;
+  z-index:3;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:30px;
+}
+.section{padding:100px 7vw}
+.section-kicker{color:var(--red);margin-bottom:22px}
+.story{background:#fff}
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:8vw;
+}
+.story h2,.gallery h2,.included h2,.contact h2,.feature-caption h2{
+  margin:0;
+  font:800 clamp(46px,7vw,92px)/.92 "Barlow Condensed",sans-serif;
+  text-transform:uppercase;
+}
+.story-copy{
+  max-width:700px;
+  font-size:18px;
+  line-height:1.75;
+  color:#394653;
+}
+.spec-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:var(--navy);
+  color:#fff;
+}
+.spec-strip article{
+  min-height:190px;
+  padding:36px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-right:1px solid rgba(255,255,255,.15);
+}
+.spec-strip span:last-child{
+  margin-top:6px;
+  color:#bac6d2;
+  font:700 15px/1.2 "Barlow Condensed",sans-serif;
+  letter-spacing:.12em;
+}
+.spec-number{
+  color:var(--yellow);
+  font:800 clamp(38px,5vw,70px)/1 "Barlow Condensed",sans-serif;
+}
+.feature-hero{position:relative;min-height:72vh;overflow:hidden}
+.feature-hero img{width:100%;height:72vh;object-fit:cover}
+.feature-hero:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(5,15,24,.76),transparent 70%);
+}
+.feature-caption{
+  position:absolute;z-index:2;left:7vw;bottom:9vh;color:#fff
+}
+.feature-caption span{
+  color:var(--yellow);
+  font:800 15px/1 "Barlow Condensed",sans-serif;
+  letter-spacing:.16em
+}
+.details{background:var(--cream)}
+.details-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.detail-card{
+  min-height:250px;
+  padding:34px;
+  background:#fff;
+  border-top:5px solid var(--blue);
+  box-shadow:0 14px 40px rgba(7,19,31,.08);
+}
+.detail-icon{
+  display:block;
+  color:var(--red);
+  font:800 15px/1 "Barlow Condensed",sans-serif;
+  letter-spacing:.12em;
+}
+.detail-card h3{
+  margin:36px 0 10px;
+  font:800 30px/1 "Barlow Condensed",sans-serif;
+  text-transform:uppercase;
+}
+.detail-card p{color:var(--muted);line-height:1.6}
+.gallery{background:#fff}
+.gallery-header{
+  display:flex;align-items:end;justify-content:space-between;
+  gap:30px;margin-bottom:34px
+}
+.gallery-header p{color:var(--muted)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:250px;
+  gap:12px;
+}
+.gallery-item{
+  padding:0;border:0;overflow:hidden;cursor:pointer;background:#ddd
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.gallery-item:hover img{transform:scale(1.03)}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item.tall{grid-row:span 2}
+.included{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  background:var(--yellow);
+}
+.checklist{
+  list-style:none;
+  padding:0;margin:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:16px 24px
+}
+.checklist li{
+  position:relative;padding-left:28px;font-weight:700;line-height:1.45
+}
+.checklist li:before{
+  content:"✓";position:absolute;left:0;color:var(--red)
+}
+.contact{
+  padding:100px 7vw;
+  background:
+    linear-gradient(rgba(7,19,31,.92),rgba(7,19,31,.94)),
+    url("images/boat-06.jpg") center/cover;
+  color:#fff;
+}
+.contact-inner{max-width:950px}
+.contact h2{margin:.2em 0}
+.contact p{max-width:720px;color:#c8d2dc;font-size:18px;line-height:1.7}
+.price-card{
+  display:inline-flex;
+  flex-direction:column;
+  margin:45px 0 30px;
+  padding:22px 30px;
+  border:2px solid rgba(255,255,255,.35);
+}
+.price-card span{font:800 14px/1 "Barlow Condensed";letter-spacing:.12em}
+.price-card strong{font:800 clamp(56px,8vw,100px)/.9 "Barlow Condensed";color:var(--yellow)}
+.nfc-note{display:flex;align-items:center;gap:18px;margin-top:18px}
+.nfc-ring{
+  width:72px;height:72px;border:3px solid var(--yellow);border-radius:50%;
+  display:grid;place-items:center;color:var(--yellow);font:800 20px/1 "Barlow Condensed"
+}
+.nfc-note strong{display:block;font:800 22px/1 "Barlow Condensed";letter-spacing:.06em}
+.nfc-note small{display:block;color:#c8d2dc;margin-top:6px}
+footer{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:26px 7vw;background:#02080d;color:#fff;
+  font:700 14px/1.3 "Barlow Condensed";letter-spacing:.08em
+}
+dialog{
+  width:min(1100px,94vw);
+  padding:0;border:0;background:transparent;
+}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+dialog img{width:100%;max-height:88vh;object-fit:contain}
+#closeLightbox{
+  position:fixed;right:24px;top:18px;
+  width:48px;height:48px;border:0;border-radius:50%;
+  background:#fff;font-size:30px;cursor:pointer
+}
+@media (max-width:900px){
+  .story-grid,.included{grid-template-columns:1fr}
+  .details-grid{grid-template-columns:1fr 1fr}
+  .spec-strip{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .hero-content{padding-top:23vh}
+}
+@media (max-width:600px){
+  .topbar{padding:0 18px}
+  .topbar span{font-size:11px}
+  .hero-overlay{
+    background:
+      linear-gradient(0deg,rgba(2,11,18,.9) 0%,rgba(2,11,18,.55) 55%,rgba(2,11,18,.12) 100%);
+  }
+  .hero-image{object-position:60% center}
+  .hero-content{padding:54vh 22px 80px}
+  .hero h1{font-size:62px}
+  .hero-actions .btn{width:100%}
+  .section{padding:72px 22px}
+  .spec-strip{grid-template-columns:1fr 1fr}
+  .spec-strip article{min-height:145px;padding:24px 18px}
+  .details-grid{grid-template-columns:1fr}
+  .gallery-header{align-items:start;flex-direction:column}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:260px}
+  .gallery-item.wide,.gallery-item.tall{grid-column:auto;grid-row:auto}
+  .checklist{grid-template-columns:1fr}
+  .contact{padding:80px 22px}
+  footer{padding:24px 22px;flex-direction:column}
+}
