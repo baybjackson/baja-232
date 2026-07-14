@@ -1,23 +1,27 @@
-# Baja 232 Islander Website
+# Baja 232 Website — Color & Video Update
 
-A one-page static sales website for the 2000 Baja 232 Islander.
+This version includes:
 
-## Edit the owner contact number
+- New graphite, metallic-silver, Baja red, yellow, and blue color palette
+- New button colors:
+  - Explore the Boat: Baja yellow
+  - Contact the Owner: silver outline
+  - Call: Baja red
+  - Text: metallic silver
+  - Email: yellow outline
+- Text-only cinematic introduction
+- Intro video removed
+- New dedicated **See It in Action** video section
+- Captain’s Call exhaust audio button
+- Email button for `2000baja232@gmail.com`
+- Phone number `(318) 470-5213`
 
-Open `index.html` and replace both instances of:
+## Upload to GitHub
 
-`+13185183363`
-
-with the correct owner's mobile number.
-
-## Edit the price
-
-Search for `$26,900` in `index.html`.
-
-## Replace photos later
-
-Keep the filenames `boat-01.jpg` through `boat-10.jpg` in the `images` folder, or update the corresponding image paths in `index.html`.
-
-## Deploy
-
-Upload all files to the root of the GitHub repository, then import the repository into Vercel. Vercel should detect this as a static site and deploy it automatically.
+1. Extract this ZIP.
+2. Open your existing `baja-232` repository.
+3. Choose **Add file → Upload files**.
+4. Upload everything inside the extracted folder.
+5. Allow GitHub to replace the current files.
+6. Commit the changes.
+7. Vercel should redeploy automatically.
