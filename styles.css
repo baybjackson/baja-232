@@ -177,44 +177,6 @@ a{text-decoration:none;color:inherit}
   font:800 15px/1 "Barlow Condensed",sans-serif;
   letter-spacing:.16em
 }
-
-.motion-section{
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  gap:5vw;
-  align-items:center;
-  padding:90px 7vw;
-  background:linear-gradient(135deg,#07131f,#102b43);
-  color:#fff;
-}
-.motion-copy h2{
-  margin:0 0 18px;
-  font:800 clamp(54px,7vw,100px)/.9 "Barlow Condensed",sans-serif;
-  text-transform:uppercase;
-}
-.motion-copy p{max-width:480px;color:#c9d5df;font-size:18px;line-height:1.65}
-.video-stage{
-  position:relative;
-  min-height:680px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-  background:#000;
-}
-.video-bg{
-  position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;
-  filter:blur(28px) brightness(.45) saturate(1.2);transform:scale(1.08);
-}
-.video-main{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;background:rgba(0,0,0,.12);
-}
-.video-badge{
-  position:absolute;z-index:3;left:20px;bottom:20px;
-  padding:12px 16px;background:rgba(7,19,31,.82);border-left:4px solid var(--yellow);
-  font:800 22px/1 "Barlow Condensed",sans-serif;letter-spacing:.05em;
-}
-.video-badge span{display:block;margin-top:4px;color:var(--yellow);font-size:12px;letter-spacing:.15em}
-
 .details{background:var(--cream)}
 .details-grid{
   display:grid;
@@ -319,9 +281,6 @@ dialog img{width:100%;max-height:88vh;object-fit:contain}
   background:#fff;font-size:30px;cursor:pointer
 }
 @media (max-width:900px){
-  .motion-section{grid-template-columns:1fr}
-  .video-stage{min-height:650px}
-
   .story-grid,.included{grid-template-columns:1fr}
   .details-grid{grid-template-columns:1fr 1fr}
   .spec-strip{grid-template-columns:1fr 1fr}
@@ -329,9 +288,6 @@ dialog img{width:100%;max-height:88vh;object-fit:contain}
   .hero-content{padding-top:23vh}
 }
 @media (max-width:600px){
-  .motion-section{padding:70px 22px}
-  .video-stage{min-height:560px}
-
   .topbar{padding:0 18px}
   .topbar span{font-size:11px}
   .hero-overlay{
@@ -353,3 +309,5 @@ dialog img{width:100%;max-height:88vh;object-fit:contain}
   .contact{padding:80px 22px}
   footer{padding:24px 22px;flex-direction:column}
 }
+
+.listen{background:linear-gradient(135deg,#07131f,#102a42);color:#fff}.listen-card{display:grid;grid-template-columns:1.4fr .8fr;gap:6vw;align-items:center;padding:48px;border:1px solid rgba(255,255,255,.15);background:radial-gradient(circle at top right,rgba(243,196,47,.13),transparent 34%),rgba(255,255,255,.03)}.listen h2{margin:.15em 0;font:800 clamp(48px,7vw,90px)/.92 "Barlow Condensed",sans-serif;text-transform:uppercase}.listen p{color:#c8d2dc;font-size:18px;line-height:1.65;max-width:680px}.audio-wrap{display:flex;justify-content:center}.audio-button{width:min(100%,360px);min-height:88px;padding:20px 28px;border:3px solid var(--yellow);background:transparent;color:var(--yellow);font:800 20px/1.1 "Barlow Condensed",sans-serif;letter-spacing:.08em;cursor:pointer;transition:.2s ease}.audio-button:hover,.audio-button.playing{background:var(--yellow);color:var(--navy);transform:translateY(-2px)}@media(max-width:800px){.listen-card{grid-template-columns:1fr;padding:30px}}
