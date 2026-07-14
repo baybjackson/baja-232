@@ -1,28 +1,23 @@
-# Baja 232 Islander Website — Updated Version
+# Baja 232 Islander Website
 
-This package includes:
+A one-page static sales website for the 2000 Baja 232 Islander.
 
-- Cinematic opening video using `video/baja-intro.mp4`
-- Intro sequence:
-  - 2000 Baja 232 Islander
-  - One Boat
-  - One Owner
-  - A Lifetime of Memories
-  - Welcome Aboard
-- Replay Video controls
-- Updated editorial-style story section
-- Boat highlights grid
-- Updated boat and trailer details
-- Captain’s Call exhaust audio button
-- Call and text buttons for (318) 470-5213
+## Edit the owner contact number
 
-## Replace the live site
+Open `index.html` and replace both instances of:
 
-1. Extract this ZIP.
-2. In the existing GitHub `baja-232` repository, choose **Add file → Upload files**.
-3. Upload everything inside this folder, including the `video`, `audio`, and `images` folders.
-4. Allow GitHub to replace the existing files.
-5. Commit the changes.
-6. Vercel should redeploy automatically.
+`+13185183363`
 
-Because browsers normally block websites from autoplaying sound, the opening video begins muted. The separate Captain’s Call button plays the exhaust audio after the visitor clicks it.
+with the correct owner's mobile number.
+
+## Edit the price
+
+Search for `$26,900` in `index.html`.
+
+## Replace photos later
+
+Keep the filenames `boat-01.jpg` through `boat-10.jpg` in the `images` folder, or update the corresponding image paths in `index.html`.
+
+## Deploy
+
+Upload all files to the root of the GitHub repository, then import the repository into Vercel. Vercel should detect this as a static site and deploy it automatically.
