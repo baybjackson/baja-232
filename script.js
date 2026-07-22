@@ -2,6 +2,9 @@ const intro = document.getElementById('intro');
 const siteShell = document.getElementById('siteShell');
 const skipIntro = document.getElementById('skipIntro');
 const welcomeButton = document.getElementById('welcomeButton');
+const introStart = document.getElementById('introStart');
+const introCopy = document.querySelector('.intro-copy');
+const introEngineAudio = document.getElementById('introEngineAudio');
 
 const sequence = [
   ['.intro-title', 300, 1800],
@@ -12,6 +15,7 @@ const sequence = [
 ];
 
 let timers = [];
+let fadeTimer = null;
 
 function clearSequence(){
   timers.forEach(clearTimeout);
@@ -19,12 +23,60 @@ function clearSequence(){
   document.querySelectorAll('.intro-line').forEach(el => el.classList.remove('show'));
 }
 
-function startIntro(){
+function stopIntroAudio(){
+  if(fadeTimer){
+    clearInterval(fadeTimer);
+    fadeTimer = null;
+  }
+  introEngineAudio.pause();
+  introEngineAudio.currentTime = 0;
+  introEngineAudio.volume = 1;
+}
+
+function fadeIntroAudio(){
+  if(introEngineAudio.paused) return;
+  if(fadeTimer) clearInterval(fadeTimer);
+
+  fadeTimer = setInterval(() => {
+    introEngineAudio.volume = Math.max(0, introEngineAudio.volume - 0.08);
+    if(introEngineAudio.volume <= 0){
+      stopIntroAudio();
+    }
+  }, 80);
+}
+
+function prepareIntro(){
   clearSequence();
+  stopIntroAudio();
   document.body.classList.add('intro-open');
   intro.classList.remove('closed');
   siteShell.classList.remove('ready');
   siteShell.setAttribute('aria-hidden','true');
+
+  introStart.style.display = 'flex';
+  introCopy.style.opacity = '0';
+  introCopy.style.pointerEvents = 'none';
+  skipIntro.style.opacity = '0';
+  skipIntro.style.pointerEvents = 'none';
+}
+
+async function startIntro(){
+  clearSequence();
+
+  introStart.style.display = 'none';
+  introCopy.style.opacity = '1';
+  introCopy.style.pointerEvents = 'auto';
+  skipIntro.style.opacity = '1';
+  skipIntro.style.pointerEvents = 'auto';
+
+  introEngineAudio.currentTime = 0;
+  introEngineAudio.volume = 1;
+
+  try{
+    await introEngineAudio.play();
+  }catch(error){
+    console.warn('Intro sound could not start:', error);
+  }
 
   sequence.forEach(([selector,start,duration]) => {
     const el = document.querySelector(selector);
@@ -35,11 +87,13 @@ function startIntro(){
     }
   });
 
+  timers.push(setTimeout(fadeIntroAudio, 6600));
   timers.push(setTimeout(showSite, 9300));
 }
 
 function showSite(){
   clearSequence();
+  fadeIntroAudio();
   intro.classList.add('closed');
   siteShell.classList.add('ready');
   siteShell.setAttribute('aria-hidden','false');
@@ -47,36 +101,12 @@ function showSite(){
   window.scrollTo({top:0,behavior:'instant'});
 }
 
+introStart.addEventListener('click', startIntro);
 skipIntro.addEventListener('click', showSite);
 welcomeButton.addEventListener('click', showSite);
-document.getElementById('replayIntro').addEventListener('click', startIntro);
-document.getElementById('footerReplay').addEventListener('click', startIntro);
-window.addEventListener('load', startIntro);
-
-/* Captain's Call audio */
-const soundButton = document.getElementById('soundButton');
-const engineAudio = document.getElementById('engineAudio');
-
-soundButton.addEventListener('click', async () => {
-  if(engineAudio.paused){
-    try{
-      await engineAudio.play();
-      soundButton.textContent = '❚❚ Pause Exhaust Audio';
-      soundButton.classList.add('playing');
-    }catch(error){
-      console.error(error);
-    }
-  }else{
-    engineAudio.pause();
-    soundButton.textContent = '▶ Click Here to Listen';
-    soundButton.classList.remove('playing');
-  }
-});
-
-engineAudio.addEventListener('ended', () => {
-  soundButton.textContent = '▶ Click Here to Listen';
-  soundButton.classList.remove('playing');
-});
+document.getElementById('replayIntro').addEventListener('click', prepareIntro);
+document.getElementById('footerReplay').addEventListener('click', prepareIntro);
+window.addEventListener('load', prepareIntro);
 
 /* Photo lightbox */
 const dialog = document.getElementById('lightbox');
