@@ -14,12 +14,25 @@
 </head>
 <body class="intro-open">
 
-  <!-- TEXT-ONLY CINEMATIC INTRO -->
   <section class="intro" id="intro" aria-label="Baja introduction">
     <div class="intro-grid"></div>
     <div class="intro-glow"></div>
 
-    <div class="intro-copy" aria-live="polite">
+    <button id="introStart" type="button" style="
+      position:absolute;z-index:5;display:flex;flex-direction:column;align-items:center;
+      gap:8px;padding:18px 28px;border:1px solid rgba(255,255,255,.55);
+      background:rgba(255,255,255,.06);color:#fff;cursor:pointer;
+      text-transform:uppercase;letter-spacing:.12em;font:800 18px 'Barlow Condensed';
+      backdrop-filter:blur(8px);">
+      <span>Tap to Begin</span>
+      <small style="color:#f2c22c;font-size:12px;letter-spacing:.14em;">Sound On · Welcome Aboard</small>
+    </button>
+
+    <audio id="introEngineAudio" preload="auto">
+      <source src="video/backoftheboat.mp4" type="audio/mp4">
+    </audio>
+
+    <div class="intro-copy" aria-live="polite" style="opacity:0;pointer-events:none;">
       <div class="intro-line intro-title">
         <small>2000</small>
         <strong>BAJA</strong>
@@ -35,7 +48,7 @@
       </button>
     </div>
 
-    <button class="skip-intro" id="skipIntro" type="button">Skip Intro</button>
+    <button class="skip-intro" id="skipIntro" type="button" style="opacity:0;pointer-events:none;">Skip Intro</button>
   </section>
 
   <div class="site-shell" id="siteShell" aria-hidden="true">
@@ -48,7 +61,6 @@
       </div>
     </nav>
 
-    <!-- MAIN HERO -->
     <header class="hero" id="hero">
       <img src="images/boat-01.jpg" alt="2000 Baja 232 Islander on its Road Runner tandem-axle trailer">
       <div class="hero-overlay"></div>
@@ -67,7 +79,6 @@
       <a class="scroll-arrow" href="#story" aria-label="Continue to the story">↓</a>
     </header>
 
-    <!-- QUICK FACTS -->
     <section class="quick-facts" aria-label="Boat highlights">
       <article><span class="fact-icon">⚙</span><div><b>Engine</b><small>7.4L MPI Big Block</small></div></article>
       <article><span class="fact-icon">◷</span><div><b>Engine Hours</b><small>224.1 Verified</small></div></article>
@@ -79,34 +90,26 @@
       <article><span class="fact-icon">RR</span><div><b>Trailer</b><small>1999 Road Runner Tandem Axle</small></div></article>
     </section>
 
-    <!-- STORY -->
     <section class="story section" id="story">
       <div class="section-label">The Story</div>
-
       <div class="story-grid">
         <h2>One Boat.<br>One Family.<br>A Lifetime<br>of Memories.</h2>
-
         <div class="story-copy">
           <p>Finding a clean Baja 232 Islander is becoming increasingly difficult. Locating a <strong>one-owner, low-hour, well-preserved, water-ready</strong> Baja 232 Islander is an even bigger challenge. <strong>Congratulations...you’ve done just that!</strong></p>
-
           <p>This 2000 Baja 232 Islander has only <strong>224.1 verified engine hours</strong>. The gelcoat retains a beautiful gloss, the original graphics remain vibrant, and the interior is exceptional with <strong>no rips or tears.</strong></p>
-
           <p>It’s obvious upon inspection that great pride was taken to carefully maintain this boat, resulting in a well-preserved, honest Baja with <strong>many years of enjoyment still ahead.</strong></p>
         </div>
       </div>
     </section>
 
-    <!-- SEE IT IN ACTION -->
     <section class="action-section section" id="action">
       <div class="action-heading">
         <div>
           <div class="section-label light">See It in Action</div>
           <h2>Made for the water.</h2>
         </div>
-
         <p>Turn up the volume, press play, and watch the Baja do what it was built to do.</p>
       </div>
-
       <div class="video-frame">
         <video controls playsinline preload="metadata" poster="images/boat-06.jpg">
           <source src="video/baja-in-action.mp4" type="video/mp4">
@@ -115,46 +118,26 @@
       </div>
     </section>
 
-    <!-- PERFORMANCE -->
     <section class="performance section">
       <div class="section-label light">Captain's Call </div>
-
       <div class="performance-grid">
+        <div class="performance-copy">
+          <h2>Experience the Big Block.</h2>
+          <p>Experience the unmistakable sound of the <strong>Captain’s Call exhaust</strong> as the <strong>7.4L MPI Big Block</strong> comes to life.</p>
+          <a class="sound-button" href="#bigBlockVideo">▶ WATCH &amp; LISTEN</a>
+        </div>
+        <div class="video-frame" id="bigBlockVideo">
+          <video controls playsinline preload="metadata" poster="images/boat-06.jpg">
+            <source src="video/backoftheboat.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
 
-  <div class="performance-copy">
-
-    <h2>Experience the Big Block.</h2>
-
-    <p>
-      Experience the unmistakable sound of the
-      <strong>Captain’s Call exhaust</strong> as the
-      <strong>7.4L MPI Big Block</strong> comes to life.
-    </p>
-
-    <a class="sound-button" href="#bigBlockVideo">
-      ▶ WATCH &amp; LISTEN
-    </a>
-
-  </div>
-
-  <div class="video-frame" id="bigBlockVideo">
-
-    <video controls playsinline preload="metadata"
-           poster="images/boat-06.jpg">
-
-      <source src="video/backoftheboat.mp4" type="video/mp4">
-
-      Your browser does not support the video tag.
-
-    </video>
-
-  </div>
-
-    <!-- FEATURES -->
     <section class="features section">
       <div class="section-label">Details That Matter</div>
       <h2 class="section-title">Remarkably preserved.<br>Thoughtfully updated.</h2>
-
       <div class="cards">
         <article><span>01</span><h3>Updated Instrument Panel</h3><p>Gauges and instrument panel updated in 2024.</p></article>
         <article><span>02</span><h3>Premium Stereo</h3><p>More than $6,000 invested in the stereo approximately two years ago.</p></article>
@@ -167,7 +150,6 @@
       </div>
     </section>
 
-
     <section class="verified section" id="verified-hours">
       <div class="verified-grid">
         <img src="images/verified-hours.jpg" alt="MerCruiser diagnostic scan showing 224.1 engine hours">
@@ -179,16 +161,13 @@
       </div>
     </section>
 
-    <!-- TRAILER -->
     <section class="trailer section">
       <div class="trailer-image">
         <img src="images/boat-04.jpg" alt="Baja 232 Islander on 1999 Road Runner tandem axle trailer">
       </div>
-
       <div class="trailer-copy">
         <div class="section-label light">The Trailer</div>
         <h2>1999 Road Runner<br>Tandem Axle.</h2>
-
         <ul>
           <li>Matching tandem-axle trailer</li>
           <li>Fresh wheel bearings</li>
@@ -198,17 +177,14 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
     <section class="gallery section" id="gallery">
       <div class="gallery-heading">
         <div>
           <div class="section-label">Photo Gallery</div>
           <h2 class="section-title">Take a closer look.</h2>
         </div>
-
         <p>Tap any photograph to enlarge.</p>
       </div>
-
       <div class="gallery-grid">
         <button class="gallery-item wide"><img src="images/boat-06.jpg" alt="Rear three-quarter view"></button>
         <button class="gallery-item"><img src="images/boat-03.jpg" alt="Bow seating"></button>
@@ -221,28 +197,21 @@
       </div>
     </section>
 
-    <!-- FINAL CONTACT -->
     <section class="contact" id="contact">
       <div class="contact-content">
         <p class="eyebrow">One Boat · One Owner · A Lifetime of Memories</p>
         <h2>Now it’s ready<br>for your story.</h2>
-
         <p>Contact the owner for additional details, photographs, video, or to arrange a showing.</p>
-
         <div class="contact-actions">
-          <a class="button call-button" href="tel:+13184705213">Call the Owner</a>
-
           <a class="button text-button"
              href="sms:+13184705213?&body=Hi%2C%20I%E2%80%99m%20interested%20in%20your%202000%20Baja%20232%20Islander.">
              Text the Owner
           </a>
-
           <a class="button email-button"
              href="mailto:2000baja232@gmail.com?subject=Inquiry about your 2000 Baja 232 Islander">
              Email the Owner
           </a>
         </div>
-
         <div class="price">
           <small>Asking Price</small>
           <strong>$28,900</strong>
